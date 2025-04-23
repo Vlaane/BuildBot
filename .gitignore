@@ -1,6 +1,26 @@
 # Project exclude paths
-/venv/
-__pycache__
-/__pycache__
+# Виртуальные окружения
+venv/
+.venv/
+
+# Кеш Python
 __pycache__/
-.venv
+*.pyc
+*.pyo
+*.pyd
+
+# Логи
+*.log
+logs/
+
+# Настройки IDE
+.vscode/
+.idea/
+
+# Файлы окружения
+.env
+*.env
+
+# Другие временные файлы
+*.swp
+*~
