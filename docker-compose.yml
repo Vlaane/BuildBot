@@ -7,10 +7,9 @@ services:
       POSTGRES_USER: tg_user
       POSTGRES_PASSWORD: 12345
       POSTGRES_DB: tg_bot
-    volumes:
-      - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
   avito-app:
     build: .
     container_name: BB_bot
@@ -20,5 +19,3 @@ services:
       - "3001:3001"
     depends_on:
       - postgres-db
-volumes:
-  pgdata:
