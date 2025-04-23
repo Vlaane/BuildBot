@@ -1,17 +1,6 @@
 version: '3.8'
 
 services:
-  postgres-db:
-    image: postgres:14
-    container_name: postgres-cont
-    environment:
-      POSTGRES_USER: tg_user
-      POSTGRES_PASSWORD: '12345'
-      POSTGRES_DB: tg_bot
-    ports:
-      - "5432:5432"
-    restart: always
-
   avito-app:
     build: .
     container_name: BB_bot
