@@ -20,19 +20,3 @@ services:
     ports:
       - "3001:3001"
     restart: always
-  restarter:
-    image: docker:cli
-    restart: unless-stopped
-    volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
-    entrypoint: ["/bin/sh","-c"]
-    command:
-      - |
-        while true; do
-          current_epoch=$$(date +%s)
-          target_epoch=$$(( $$(date -d "05:00" +%s) + 86400 ))
-          sleep_seconds=$$(( target_epoch - current_epoch ))
-          echo "$$(date) + $$sleep_seconds seconds"
-          sleep $$sleep_seconds
-          
-          docker restart avito_bot
-        done
