@@ -753,7 +753,7 @@ async def start_avito_webhook(webhook_function, robokassa_function=None):
     app.router.add_get('/', index_function)
     runner = web.AppRunner(app)
     await runner.setup()
-    site = web.TCPSite(runner, port=3001)
+    site = web.TCPSite(runner, host='0.0.0.0', port=3001)
     await site.start()
     logger.info("Server running on port 3001")
     while True:
