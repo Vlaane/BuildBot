@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:14
+    container_name: postgres-cont
+    environment:
+      POSTGRES_USER: tg_user
+      POSTGRES_PASSWORD: '12345'
+      POSTGRES_DB: tg_bot
+    ports:
+      - "5432:5432"
+    restart: always
+
+  avito-app:
+    build: .
+    container_name: BB_bot
+    env_file:
+      - .env
+    ports:
+      - "3001:3001"
+    restart: always
+  restarter:
+    image: docker:cli
+    restart: unless-stopped
+    volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
+    entrypoint: ["/bin/sh","-c"]
+    command:
+      - |
+        while true; do
+          current_epoch=$$(date +%s)
+          target_epoch=$$(( $$(date -d "05:00" +%s) + 86400 ))
+          sleep_seconds=$$(( target_epoch - current_epoch ))
+          echo "$$(date) + $$sleep_seconds seconds"
+          sleep $$sleep_seconds
+          
+          docker restart avito_bot
+        done
