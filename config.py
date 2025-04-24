@@ -15,7 +15,7 @@ GIGACHAT_CREDS = os.environ.get('GIGACHAT_CREDS')
 
 # Webhook settings
 WEBHOOK_HOST = os.environ.get('WEBHOOK_HOST')  # ngrok URL или ваш сервер
-WEBHOOK_PATH = '/'
+WEBHOOK_PATH = '/webhook'
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 ROBOKASSA_PATH = '/result-payment'
 
