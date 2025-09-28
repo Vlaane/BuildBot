@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 logging.basicConfig(
     level=logging.INFO,  # или DEBUG для более подробных логов
     format='%(asctime)s %(levelname)s %(name)s: %(message)s',
-)
+
 
 
 
