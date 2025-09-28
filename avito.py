@@ -29,7 +29,7 @@ ROOT_USER_ID = os.getenv("ROOT_USER_ID")
 application_chat_ids = []
 COUNT_OTHER_MESSAGES = 7
 token_info = None
-akk = 'NmU4NTlkMmEtZWFhNi00M2RiLWJjZTUtNjJlOTdiMzBlOGQzOmNjYTk0MGVjLTY2ZGUtNDJjYy05M2RiLTYwMjFmZDc3Y2FkMw=='
+akk = ''
 
 
 logging.basicConfig(level=logging.INFO)
@@ -69,7 +69,7 @@ def get_gigachat_key():
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
         'RqUID': str(uuid.uuid4()),
-        'Authorization': 'Basic NmU4NTlkMmEtZWFhNi00M2RiLWJjZTUtNjJlOTdiMzBlOGQzOmNjYTk0MGVjLTY2ZGUtNDJjYy05M2RiLTYwMjFmZDc3Y2FkMw=='
+        'Authorization': 'Basic '
     }
 
     try:
@@ -528,7 +528,7 @@ async def handle_webhook_message(request):
             username = get_username(chat, user_id)
 
             formatted_prompt = prompt.format(client_name=username, current_datetime=datetime.now().date())
-            key = "NmU4NTlkMmEtZWFhNi00M2RiLWJjZTUtNjJlOTdiMzBlOGQzOmNjYTk0MGVjLTY2ZGUtNDJjYy05M2RiLTYwMjFmZDc3Y2FkMw=="
+            key = ""
             logger.info("Запуск генерации описания через GigaChat")
             application_description = await generate_application_description(messages, formatted_prompt, key)
             logger.info(f"Результат генерации: {application_description}")
